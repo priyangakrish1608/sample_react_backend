@@ -7,5 +7,5 @@ import com.react.sample.model.EmployeeEntity;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Integer> {
-
+    // You can add custom repository methods here if needed
 }

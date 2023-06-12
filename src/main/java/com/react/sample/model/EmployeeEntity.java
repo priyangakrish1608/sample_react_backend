@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="employee_entity")
+@Table(name = "employee_entity")
 public class EmployeeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,21 +19,7 @@ public class EmployeeEntity {
     private double salary;
     private String department;
 
-    public EmployeeEntity() {
-    	super();
-    }
-
-    public EmployeeEntity(Integer id, String name, Integer age, String sex, String email, double salary, String department) {
-    	super();
-    	this.id = id;
-        this.name = name;
-        this.age = age;
-        this.sex = sex;
-        this.email = email;
-        this.salary = salary;
-        this.department = department;
-    }
-
+    // Getters and setters
     public Integer getId() {
         return id;
     }
@@ -54,7 +40,7 @@ public class EmployeeEntity {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
