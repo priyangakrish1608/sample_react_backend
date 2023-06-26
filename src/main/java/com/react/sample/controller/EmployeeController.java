@@ -1,5 +1,6 @@
 package com.react.sample.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.react.sample.model.EmployeeEntity;
 import com.react.sample.model.EmployeeService; // Corrected import
 
-@CrossOrigin("*")
+@CrossOrigin()
 @RestController
 public class EmployeeController {
 	
@@ -46,6 +49,11 @@ public class EmployeeController {
 	public void deleteEmployee(@PathVariable int id) { // Updated path variable name
 		employeeService.delete(id);
 	}
+	
+	@PostMapping("/employees/{id}/photo")
+    public EmployeeEntity uploadEmployeePhoto(@PathVariable int id, @RequestParam("photo") MultipartFile photo) throws IOException {
+        return employeeService.uploadEmployeePhoto(id, photo);
+    }
 }
         
        

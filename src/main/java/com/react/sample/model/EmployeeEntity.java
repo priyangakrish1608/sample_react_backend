@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +19,18 @@ public class EmployeeEntity {
     private String email;
     private double salary;
     private String department;
+    
+    @Lob
+    private byte[] photo; // Add a byte array field to store the photo
+
+    // Getters and setters
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
 
     // Getters and setters
     public Integer getId() {

@@ -1,11 +1,13 @@
 package com.react.sample.model;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.react.sample.model.EmployeeEntity;
 import com.react.sample.repository.EmployeeRepository;
@@ -48,7 +50,14 @@ public class EmployeeService {
             throw new NoSuchElementException("Employee not found");
         }
     }
+    
+    public EmployeeEntity uploadEmployeePhoto(int id, MultipartFile photo) throws IOException {
+        EmployeeEntity employee = findOne(id);
+        employee.setPhoto(photo.getBytes());
+        return save(employee);
+    }
 }
+
 
 
 
